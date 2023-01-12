@@ -1,0 +1,22 @@
+General:
+  Prefix: "&d[&eItemBuilder&d]"
+  Help:
+    - "&6+---------&cItemBuilder&6----------+"
+    - "&c/ItemBuilder giveItem <ItemName> <Player/None>- Give yourself or a player a custom item."
+    - "&c/ItemBuilder openMenu <Menu name> <Player/None>- Open a menu to yourself or a player."
+    - "&c/ItemBuilder reload- Reload configuration files."
+    - "&c/ItemBuilder help- Opens this list."
+    - "&6------------------------------------"
+  Got_an_item: "<Prefix> <StatePrefix> &dYou successfully obtained &c<item>&d!"
+  Open_a_menu: "<Prefix> <StatePrefix> &dYou opened &c<MenuName>&d menu!"
+  Item_Does_Not_Exist: "<Prefix> <StatePrefix> &cThis item does not exist!"
+  Menu_Does_Not_Exist:  "<Prefix> <StatePrefix> &cThis menu does not exist!"
+  no_permission: "<Prefix> <StatePrefix> &cYou don't have permission to use this command &7(<permission>&7)."
+Admin:
+  Given_an_item: "<Prefix> <StatePrefix> &dYou have successfully given &c<ItemGiven>&d to <PlayerGiven>"
+  Open_Menu_To_Player: "<Prefix> <StatePrefix> &dYou have successfully opened &c<MenuName>&d menu to <PlayerOpenedMenu>"
+  Reload_Config: "<Prefix> <StatePrefix> &dYou have successfully reloaded the plugin!"
+  Player_Not_Found: "<Prefix> &cThis player is not online or unavailable!"
+  Success_Prefix: "&a[&2&l!&a]"
+  ERROR_Prefix: "&c[&4&l!&c]"
+  Info_Prefix: "&9[&3&li&9]"

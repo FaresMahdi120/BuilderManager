@@ -1,0 +1,13 @@
+name: BuilderManager
+version: '${project.version}'
+main: me.developer.faremahdi.BuilderManager
+api-version: 1.13
+authors: [ FaresMahdi ]
+description: Hopefully a skills plugin, idk we will see lol
+commands:
+  ItemBuilder:
+    aliases:
+      - "IB"
+      - "ib"
+      - "ItemBuilder"
+      - "itembuilder"

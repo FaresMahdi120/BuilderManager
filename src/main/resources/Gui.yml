@@ -1,0 +1,26 @@
+Main_Menu:
+  Cancel_Click: true
+  Size: 26
+  Title: "&bTest"
+  filler_item:
+    Material: "STONE"
+    Amount: 1
+    Name: "&7TEST STONE"
+    slots:
+      - 0
+      - 1
+      - 2
+      - 3
+  items:
+    whateveritemtbh:
+      Material: "DIAMOND_SWORD"
+      Amount: 1
+      Name: "&5TEST PLACEHOLDER"
+      slot: 5
+      on_click:
+        - "close"
+        - "CONSOLE:say hello"
+        - "PLAYER:gmc"
+      lore:
+        - "&btest lore, don't worry about it"
+
