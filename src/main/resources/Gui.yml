@@ -1,26 +1,54 @@
-Main_Menu:
-  Cancel_Click: true
-  Size: 26
-  Title: "&bTest"
+Example_Menu: #Header the name of the menu!
+  Size: 27 #Size of the inventory need to be divided by 9 (aka 27, 54, 18 ect..)
+  Title: "&b&k!!!&r &7&lExample Menu&r &b&k!!!&r"
   filler_item:
-    Material: "STONE"
+    Material: "black_stained_glass_pane"
     Amount: 1
-    Name: "&7TEST STONE"
+    Name: "&7 "
     slots:
       - 0
       - 1
       - 2
       - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
   items:
-    whateveritemtbh:
-      Material: "DIAMOND_SWORD"
+    closemenu:
+      Material: "BARRIER"
       Amount: 1
-      Name: "&5TEST PLACEHOLDER"
-      slot: 5
+      Name: "&c&lClose Menu"
+      slot: 26
       on_click:
         - "close"
-        - "CONSOLE:say hello"
-        - "PLAYER:gmc"
       lore:
-        - "&btest lore, don't worry about it"
+        - "&7Close this menu"
+    clickTest:
+      Material: "ARROW"
+      Amount: 1
+      Name: "&2Click me!"
+      slot: 13
+      on_click:
+        - "CONSOLE:say &cYou clicked me!"
+      lore:
+        - "é7Click me!"
 

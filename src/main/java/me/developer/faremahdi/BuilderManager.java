@@ -16,8 +16,8 @@ public final class BuilderManager extends JavaPlugin {
     @Override
     public void onEnable() {
         messagesManager.loading_Message();
-        getCommand("ItemBuilder").setTabCompleter(cmd);
-        getCommand("ItemBuilder").setExecutor(cmd);
+        getCommand("itembuilder").setTabCompleter(cmd);
+        getCommand("itembuilder").setExecutor(cmd);
         OnInventoryClick onInventoryClick = new OnInventoryClick(this);
         this.getServer().getPluginManager().registerEvents(onInventoryClick, this);
     }

@@ -1,23 +1,14 @@
-stick:
-  Name: "&bTest name LMAO 2"
-  Material: "STONE_SWORD"
-  Amount: 64
-  glow: false #won't matter atm
-  Additonal_features:
-    Triggers:
-      on_right_click:
-        - Commands:
-            - "bal bal"
-      on_drop:
-
+Example_Item:
+  Name: "&bExample item"
+  Material: "STONE"
+  Amount: 1
+  glow: false #Not implemented yet!
   lore:
-    - "&cthis is a test lore, don't believe it :0"
-    - "&4think about your mistakes :)"
-    - "&danother line, how exciting :0"
-lightningsword:
+    - "&cExample&b&n lore :0"
+superPickaxe:
   Name: "&4&k!!!&r &d&nSuper Pickaxe &4&k!!!!&r"
   Material: "DIAMOND_PICKAXE"
   Amount: 1
-  glow: false #won't matter atm
+  glow: false #Not implemented yet!
   lore:
-    - "&cthis pixkace will fuck you"
+    - "&cSuper pickaxe what did you expect!"

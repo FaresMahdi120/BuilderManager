@@ -9,5 +9,5 @@ commands:
     aliases:
       - "IB"
       - "ib"
-      - "ItemBuilder"
+      - "BuilderManager"
       - "itembuilder"

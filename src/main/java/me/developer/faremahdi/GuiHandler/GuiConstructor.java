@@ -48,7 +48,7 @@ public abstract class GuiConstructor {
         }
     }
     public ItemStack menuItems(String path, BuilderManager plugin) {
-        String material = plugin.getGuiConfig().getString(path + ".filler_item.Material");
+        String material = plugin.getGuiConfig().getString(path + ".filler_item.Material").toUpperCase();
         int amount = plugin.getGuiConfig().getInt(path + ".filler_item.Amount");
         String name = plugin.getGuiConfig().getString(path + ".filler_item.Name");
         return new Builder(Material.getMaterial(material), name, amount, false, new ArrayList<>()).createItem();

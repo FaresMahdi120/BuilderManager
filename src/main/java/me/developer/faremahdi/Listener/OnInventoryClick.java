@@ -25,33 +25,36 @@ public class OnInventoryClick implements Listener {
         String title = e.getView().getTitle();
         Set<String> entries = getPlugin().getGuiConfig().getKeys(false);
         for (String entry : entries){
-            if (title.equals(ChatColor.translateAlternateColorCodes('&',
-                    getPlugin().getGuiConfig().getString(entry + ".Title")))){
-                List<String> actions = getActions(e.getCurrentItem(), title, entry);
-                processAction(actions, (Player) e.getWhoClicked());
-                if (getPlugin().getGuiConfig().getBoolean(entry + ".Cancel_Click")){
-                    e.setCancelled(true);
+            if (title.equals(ChatColor.translateAlternateColorCodes('&', getPlugin().getGuiConfig().getString(entry + ".Title")))){
+                e.setCancelled(true);
+                if (e.getCurrentItem() == null){
+                    return;
                 }
+                List<String> actions = getActions(e.getCurrentItem(), entry);
+                processAction(actions, (Player) e.getWhoClicked());
             }
         }
 
     }
-    public List<String> getActions(ItemStack itemStack, String inventoryTitle, String entry){
-        Set<String> entries = getPlugin().getGuiConfig().getKeys(false);
-            Set<String> subNodes = getPlugin().getGuiConfig().getConfigurationSection(entry + ".items").getKeys(false);
-            String itemName = itemStack.getItemMeta().getDisplayName();
-            for (String node : subNodes){
-                if (ChatColor.translateAlternateColorCodes('&', getPlugin().getGuiConfig().getString(entry + ".items." + node + ".Name")).equalsIgnoreCase(itemName)){
-                    return getPlugin().getGuiConfig().getStringList(entry + ".items." + node + ".on_click");
-                }
+    public List<String> getActions(ItemStack itemStack, String entry){
+        Set<String> subNodes = getPlugin().getGuiConfig().getConfigurationSection(entry + ".items").getKeys(false);
+        if (itemStack == null){
+            return null;
+        }
+        String itemName = itemStack.getItemMeta().getDisplayName();
+        for (String node : subNodes){
+            if (ChatColor.translateAlternateColorCodes('&', getPlugin().getGuiConfig().getString(entry + ".items." + node + ".Name")).equalsIgnoreCase(itemName)){
+                return getPlugin().getGuiConfig().getStringList(entry + ".items." + node + ".on_click");
             }
-            if (getPlugin().getGuiConfig().contains(entry + ".filler_item.on_click")){
-                if (ChatColor.translateAlternateColorCodes('&', getPlugin().getGuiConfig().getString(entry + ".filler_item.Name")).equalsIgnoreCase(itemName)){
-                    return getPlugin().getGuiConfig().getStringList(entry + ".filler_item.on_click");
-                }
+        }
+        if (getPlugin().getGuiConfig().contains(entry + ".filler_item.on_click")){
+            if (ChatColor.translateAlternateColorCodes('&', getPlugin().getGuiConfig().getString(entry + ".filler_item.Name")).equalsIgnoreCase(itemName)){
+                return getPlugin().getGuiConfig().getStringList(entry + ".filler_item.on_click");
             }
+        }
         return null;
     }
+
     public void processAction(List<String> actions, Player player){
         for (String action : actions) {
             if (action.equalsIgnoreCase("CLOSE")){

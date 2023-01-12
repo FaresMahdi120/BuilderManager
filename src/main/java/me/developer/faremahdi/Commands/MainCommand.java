@@ -32,12 +32,24 @@ public class MainCommand implements TabExecutor {
                 msg.NoPermission(PermissionManager.itembuilder_main_command.name());
                 return false;
             }
-            if (command.getAliases().contains(command.getName())) {
+            if (command.getAliases().contains(command.getName()) || command.getName().equalsIgnoreCase("itembuilder")) {
                 if (args.length == 1) {
                     switch (args[0]) {
                         case "giveItem":
                         case "openMenu":
+                        case "help":
+                        case "list":
                             msg.sendHelpMessage();
+                            break;
+                        case "reload":
+                            if (!player.hasPermission(PermissionManager.itembuilder_reload.name())) {
+                                msg.NoPermission(PermissionManager.itembuilder_reload.name());
+                                return false;
+                            }
+                            plugin.configManager.reloadLanguageConfig();
+                            plugin.configManager.reloadItemsConfig();
+                            plugin.configManager.reloadGuiConfig();
+                            msg.sendReload();
                             break;
                     }
                 } else if (args.length > 1) {
@@ -110,23 +122,13 @@ public class MainCommand implements TabExecutor {
                                 }
                             }
                             break;
-                        case "reload":
-                            if (!player.hasPermission(PermissionManager.itembuilder_reload.name())) {
-                                msg.NoPermission(PermissionManager.itembuilder_reload.name());
-                                return false;
-                            }
-                            plugin.configManager.reloadLanguageConfig();
-                            plugin.configManager.reloadItemsConfig();
-                            plugin.configManager.reloadGuiConfig();
-                            msg.sendReload();
-                            break;
                         case "list":
                             if (!player.hasPermission(PermissionManager.itembuilder_list.name())) {
                                 msg.NoPermission(PermissionManager.itembuilder_list.name());
                             }
+                            int index = 0;
                             switch (args[1]) {
                                 case "items":
-                                    int index = 0;
                                     Set<String> itemList = plugin.getItemsConfig().getKeys(false);
                                     msg.getStringUtils().SendMessage(player, "&c-----&dItems&c----");
                                     for (String line : itemList) {
@@ -144,9 +146,6 @@ public class MainCommand implements TabExecutor {
                                     break;
                             }
                             break;
-                        case "help":
-                            msg.sendHelpMessage();
-                            break;
 
                     }
                 }
@@ -158,7 +157,7 @@ public class MainCommand implements TabExecutor {
     }
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (command.getAliases().contains(command.getName())){
+        if (command.getAliases().contains(command.getName()) || command.getName().equalsIgnoreCase("itembuilder")){
             if (args.length == 1){
                 List<String> list = new ArrayList<>();
                 list.add("giveItem");
